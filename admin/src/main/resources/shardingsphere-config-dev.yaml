@@ -34,6 +34,9 @@ rules:
     tables:
       t_user:
         columns:
+          password:
+            cipherColumn: password
+            encryptorName: common_encryptor
           phone:
             cipherColumn: phone
             encryptorName: common_encryptor

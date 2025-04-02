@@ -1,6 +1,6 @@
 <template>
   <div class="login-page">
-    <h1 class="title">SaaS 短 链 接 平 台(马丁)</h1>
+    <h1 class="title">短链接管理平台</h1>
     <div class="login-box">
       <!-- 登录 -->
       <div class="logon" :class="{ hidden: !isLogin }">
@@ -137,8 +137,8 @@ const loginFormRef1 = ref()
 const loginFormRef2 = ref()
 const router = useRouter()
 const loginForm = reactive({
-  username: 'admin',
-  password: 'admin123456',
+  username: 'junjun2',
+  password: 'junjunjun123',
 })
 const addForm = reactive({
   username: '',
@@ -152,7 +152,7 @@ const addFormRule = reactive({
   phone: [
     { required: true, message: '请输入手机号', trigger: 'blur' },
     {
-      pattern: /^1[3|5|7|8|9]\d{9}$/,
+      pattern: /^1\d{10}$/,
       message: '请输入正确的手机号',
       trigger: 'blur'
     },

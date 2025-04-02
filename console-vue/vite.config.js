@@ -21,6 +21,7 @@ export default defineConfig({
           '^/api': '/api'
         }
       }
-    }
+    },
+    port: 3000,
   }
 })

@@ -27,6 +27,10 @@ import java.io.Serializable;
  * 全局返回对象
  * 公众号：马丁玩编程，回复：加群，添加马哥微信（备注：link）获取项目资料
  */
+/*
+ @Data注解来自Lombok库，自动生成相关的方法（getter、setter和toString等）
+ @Accessors使得setter方法返回当前对象，从而能够链式调用
+ */
 @Data
 @Accessors(chain = true)
 public class Result<T> implements Serializable {
@@ -38,7 +42,7 @@ public class Result<T> implements Serializable {
      * 正确返回码
      */
     public static final String SUCCESS_CODE = "0";
-
+    public static final String SUCCESS_MESSAGE = "Successful execution";
     /**
      * 返回码
      */

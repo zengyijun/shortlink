@@ -20,13 +20,10 @@ package com.nageoffer.shortlink.admin.common.biz.user;
 import com.alibaba.fastjson2.JSON;
 import com.google.common.collect.Lists;
 import com.nageoffer.shortlink.admin.common.convention.exception.ClientException;
+import com.nageoffer.shortlink.admin.common.convention.exception.RemoteException;
 import com.nageoffer.shortlink.admin.common.convention.result.Results;
 import com.nageoffer.shortlink.admin.config.UserFlowRiskControlConfiguration;
-import jakarta.servlet.Filter;
-import jakarta.servlet.FilterChain;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.ServletRequest;
-import jakarta.servlet.ServletResponse;
+import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
@@ -58,6 +55,12 @@ public class UserFlowRiskControlFilter implements Filter {
     @SneakyThrows
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException, ServletException {
+        try{
+            stringRedisTemplate.getConnectionFactory().getConnection().ping();
+        }catch(Throwable e){
+            returnJson((HttpServletResponse) response, JSON.toJSONString(Results.failure(new RemoteException("Redis connection failure"))));
+            return;
+        }
         DefaultRedisScript<Long> redisScript = new DefaultRedisScript<>();
         redisScript.setScriptSource(new ResourceScriptSource(new ClassPathResource(USER_FLOW_RISK_CONTROL_LUA_SCRIPT_PATH)));
         redisScript.setResultType(Long.class);

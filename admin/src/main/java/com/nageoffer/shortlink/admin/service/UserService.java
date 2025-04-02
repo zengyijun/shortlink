@@ -29,6 +29,7 @@ import com.nageoffer.shortlink.admin.dto.resp.UserRespDTO;
  * 用户接口层
  * 公众号：马丁玩编程，回复：加群，添加马哥微信（备注：link）获取项目资料
  */
+// 抽象出的接口，好处：解耦，便于替换实现；便于使用mock对象进行单元测试；接口便于未来维护
 public interface UserService extends IService<UserDO> {
 
     /**

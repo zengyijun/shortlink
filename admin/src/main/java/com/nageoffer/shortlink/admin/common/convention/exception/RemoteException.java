@@ -38,6 +38,7 @@ public class RemoteException extends AbstractException {
         super(message, throwable, errorCode);
     }
 
+
     @Override
     public String toString() {
         return "RemoteException{" +
