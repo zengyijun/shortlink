@@ -19,7 +19,7 @@ public class DomainController {
     private final DomainService domainService;
 
     @GetMapping("/api/short-link/domain/v1/getdomain")
-    Result<IPage<DomainRespDTO>> getDomain(DomainReqDTO requestParam){
+    Result<IPage<DomainRespDTO>> getDomain(@RequestBody DomainReqDTO requestParam){
         return Results.success(domainService.listAllDomain(requestParam));
     }
 //    为管理员提供链接上传服务
