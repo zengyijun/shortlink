@@ -38,6 +38,12 @@ const router = createRouter({
           name: 'Mine',
           component: () => import('@/views/mine/MineIndex.vue'),
           meta: { title: '个人中心' }
+        },
+        {
+          path: "purchase",
+          name: "Purchase",
+          component: () => import('@/views/purchase/PurchaseIndex.vue'),
+          meta: { title: '购买服务' }
         }
       ]
     }

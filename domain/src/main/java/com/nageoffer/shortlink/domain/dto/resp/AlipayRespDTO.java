@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class AlipayRespDTO {
-    public String orderId;
-    public String status;
+    private String form;
+    private Long orderId;
+    private boolean status;
 }

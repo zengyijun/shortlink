@@ -5,7 +5,7 @@ import org.redisson.api.RedissonClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration(value = "rBloomFilterConfigurationByDomain")
+@Configuration(value = "BloomFilterConfigurationByDomain")
 public class RBloomFilterConfiguration {
     /**
      * 在用户购买前查询数据库
@@ -13,7 +13,7 @@ public class RBloomFilterConfiguration {
     @Bean
     public RBloomFilter<String> domainPurchaseBloomFilter(RedissonClient redissonClient){
         RBloomFilter<String> bloomFilter = redissonClient.getBloomFilter("domainPurchaseBloomFilter");
-        bloomFilter.tryInit(1000000000L, 0.001);
+        bloomFilter.tryInit(10000000L, 0.001);
         return bloomFilter;
     }
 

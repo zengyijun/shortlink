@@ -13,9 +13,21 @@ spring:
                   - /api/short-link/admin/v1/user/login
                   - /api/short-link/admin/v1/user/has-username
 
+        - id: short-link-domain
+          uri: lb://short-link-domain/api/short-link/domain/**
+          predicates:
+            - Path=/api/short-link/domain/**
+          filters:
+            - name: TokenValidate
+              args:
+                whitePathList:
+                  - /api/short-link/domain/v1/uploaddomain
+                  - /api/short-link/domain/v1/alipay/**
+
         - id: short-link-project
           uri: lb://short-link-project/api/short-link/**
           predicates:
             - Path=/api/short-link/**
           filters:
             - name: TokenValidate
+

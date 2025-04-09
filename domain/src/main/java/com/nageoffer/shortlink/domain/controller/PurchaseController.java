@@ -6,9 +6,7 @@ import com.nageoffer.shortlink.domain.dto.req.PurchaseReqDTO;
 import com.nageoffer.shortlink.domain.dto.resp.PurchaseRespDTO;
 import com.nageoffer.shortlink.domain.service.PurchaseService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 // 控制器
@@ -18,8 +16,14 @@ public class PurchaseController {
 
     private final PurchaseService purchaseService;
 
-    @PutMapping("/api/short-link/domain/v1/purchase")
+    @GetMapping("/api/short-link/domain/v1/purchase/domain")
     public Result<PurchaseRespDTO> buyDomain(@RequestBody PurchaseReqDTO requestParam){
-        return Results(purchaseService.buyDomain(requestParam));
+        return Results.success(purchaseService.buyDomain(requestParam));
     }
+
+    @PostMapping("/api/short-link/domain/v1/purchase/notify")
+    public void notify(@RequestParam Object params){
+
+    }
+
 }

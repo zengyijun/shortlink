@@ -29,9 +29,6 @@ public class DomainServiceImpl extends ServiceImpl<DomainInfoMapper, DomainInfoD
 
     @Override
     public IPage<DomainRespDTO> listAllDomain(DomainReqDTO requestParam){
-//        if(!checkUser(requestParam.getUsername(), requestParam.getToken())){
-//            throw new ClientException("用户未登录！");
-//        }
         LambdaQueryWrapper<DomainInfoDO> queryWrapper = Wrappers.lambdaQuery(DomainInfoDO.class)
                 .eq(DomainInfoDO::getIsPurchased, 0);
         IPage<DomainInfoDO> queryResult = baseMapper.selectPage(requestParam, queryWrapper);

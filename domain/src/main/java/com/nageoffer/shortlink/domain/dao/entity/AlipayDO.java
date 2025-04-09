@@ -11,6 +11,6 @@ public class AlipayDO {
     private Long orderId;
     private String subject;
     private int cost;
-    private int status;
     private Date create_time;
+    private int status;
 }
