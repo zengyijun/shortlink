@@ -9,8 +9,11 @@ import java.util.Date;
 @TableName("t_order")
 public class AlipayDO {
     private Long orderId;
+    private String username;
     private String subject;
     private int cost;
-    private Date create_time;
+    private String domain;
+    private Date createTime;
     private int status;
+    private String alipayId;
 }

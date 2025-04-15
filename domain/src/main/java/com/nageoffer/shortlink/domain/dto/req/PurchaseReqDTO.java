@@ -9,7 +9,7 @@ public class PurchaseReqDTO {
 //    查询用户是否登录
     private String token;
     private String username;
-    private Long did;
+    private int cost;
     private String domain;
     private Date expire_time;
 }

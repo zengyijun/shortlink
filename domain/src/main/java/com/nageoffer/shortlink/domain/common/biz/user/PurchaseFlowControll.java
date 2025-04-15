@@ -12,7 +12,7 @@ import java.util.Collections;
 public class PurchaseFlowControll {
     private final StringRedisTemplate redisTemplate;
 
-    private static final String Flow_control_path = "lua/domain_purchase_control.lua";
+    private static final String Flow_control_path = "lua/token_bucket.lua";
 
     public boolean isAllowed(String username, String domain, Long did){
         Long res = redisTemplate.execute(

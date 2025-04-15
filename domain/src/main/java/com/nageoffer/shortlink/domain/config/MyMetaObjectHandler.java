@@ -17,6 +17,8 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
         strictInsertFill(metaObject, "updateTime", Date::new, Date.class);
         strictInsertFill(metaObject, "delFlag", ()->0, Integer.class);
         strictInsertFill(metaObject, "purchaseTime", Date::new, Date.class);
+        strictInsertFill(metaObject, "createTime", Date::new, Date.class);
+        strictInsertFill(metaObject, "status", ()->0, Integer.class);
     }
 
     @Override
