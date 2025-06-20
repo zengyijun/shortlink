@@ -5,7 +5,6 @@ import com.alipay.api.AlipayClient;
 import com.alipay.api.domain.AlipayTradePayModel;
 import com.alipay.api.request.AlipayTradePagePayRequest;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.nageoffer.shortlink.domain.common.convention.exception.ClientException;
@@ -80,7 +79,7 @@ public class AlipayServiceImpl extends ServiceImpl<AlipayMapper, AlipayDO> imple
         LambdaQueryWrapper<AlipayDO> queryWrapper = Wrappers.lambdaQuery(AlipayDO.class)
                 .eq(AlipayDO::getUsername, requestParam.getUsername())
                 .eq(AlipayDO::getSubject, "域名购买")
-                .eq(AlipayDO::getDomain, requestParam.getDomain())
+                .eq(AlipayDO::getDomain, requestParam.getDomain());
 
 
         RLock lock = redissonClient.getLock(DOMAIN_PURCHASE_KEY + requestParam.getDomain());
@@ -110,6 +109,7 @@ public class AlipayServiceImpl extends ServiceImpl<AlipayMapper, AlipayDO> imple
             String notify_url = "http://www.juniquan.com";
             alipayTradePagePayRequest.setReturnUrl(notify_url);
             String form = "";
+            
             try {
                 form = alipayClient.pageExecute(alipayTradePagePayRequest).getBody();
                 baseMapper.insert(BeanUtil.toBean(payment, AlipayDO.class));
